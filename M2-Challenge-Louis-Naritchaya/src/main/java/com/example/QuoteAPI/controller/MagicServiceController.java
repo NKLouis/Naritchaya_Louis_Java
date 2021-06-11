@@ -46,15 +46,16 @@ public class MagicServiceController<Private> {
     static List<MagicAnswers> answerList = new ArrayList<>();
     int idCounter = 1;
     private  static List<String> answerString = new ArrayList<>(Arrays.asList(
-           "Nope",
-           "Maybe",
+            "Nope",
+            "Maybe",
             "I doubt it",
-           "Of course",
-           "I don't think so",
+            "Of course",
+            "I don't think so",
             "No way!",
             "No!!!!",
             "I have no idea",
-           "Definitely yes!"
+            "Definitely yes!",
+            "Yes"
 
     ));
 
@@ -74,7 +75,6 @@ public class MagicServiceController<Private> {
        return selectedWord;
    }
 
-
     @RequestMapping(value = "/magic", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public MagicAnswers getAnswer(@RequestBody MagicAnswers answer){
@@ -82,7 +82,6 @@ public class MagicServiceController<Private> {
         String randomAnswer = answerString.get(randomChoice);
             answer.setId(idCounter++);
             answer.setAnswer(randomAnswer);
-            answerList.add(answer);
       return answer;
     }
 }
