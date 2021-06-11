@@ -2,16 +2,15 @@ package com.company;
 
 public class CalculatorObject {
     public static void main(String[] args) {
-        addition(1,1);
-        addition(1,1);
-        subtraction(23,52);
-        multiplication(34,2);
-        division(12,3);
-        division(12,7);
-        addition(3.4,2.3);
-        multiplication(6.7,4.4);
-        subtraction(5.5,0.5);
-        division(10.8,2.2);
+        System.out.println("1 + 1 = " +addition(1,1));
+        System.out.println("23 - 52 = " +subtraction(23,52));
+        System.out.println("34 x 2 = " +multiplication(34,2));
+        System.out.println("12 / 3 = " +division(12,3));
+        System.out.println("12 / 7 = " +division(12,7));
+        System.out.println("3.4 + 2.3 = " +addition(3.4,2.3));
+        System.out.println("6.7 x 4.4 = " +multiplication(6.7,4.4));
+        System.out.println("5.5 - 0.5 = " +subtraction(5.5,0.5));
+        System.out.println("10.8 / 2.2 = " +division(10.8,2.2));
 
     }
 
