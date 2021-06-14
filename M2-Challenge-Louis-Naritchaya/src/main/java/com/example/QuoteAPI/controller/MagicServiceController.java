@@ -2,7 +2,7 @@ package com.example.QuoteAPI.controller;
 
 import com.example.QuoteAPI.model.DefinitionOfWords;
 import com.example.QuoteAPI.model.MagicAnswers;
-import com.example.QuoteAPI.model.QuoteofADay;
+import com.example.QuoteAPI.model.QuoteofTheDay;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,18 +17,22 @@ import java.util.Random;
 public class MagicServiceController<Private> {
      Random rand = new Random();
 
-    //Mock Database
-    private static List<QuoteofADay> quoteList = new ArrayList<>(Arrays.asList(
-            new QuoteofADay(1, "Dalai Lama", "The purpose of our lives is to be happy."),
-            new QuoteofADay(2, "Soren Kierkegaard", "Life is not a problem to be solved, but a reality to be experienced."),
-            new QuoteofADay(3, "Oprah Winfrey", "Turn your wounds into wisdom."),
-            new QuoteofADay(4, "Deepak Chopra", "The healthiest response to life is joy."),
-            new QuoteofADay(5, "T.S. Eliot", "Every moment is a fresh beginning."),
-            new QuoteofADay(6, "Jennifer Aniston", "There are no regrets in life, just lessons."),
-            new QuoteofADay(7, "Jane Fonda", "It’s never too late – never too late to start over, never too late to be happy."),
-            new QuoteofADay(8, "John Wayne", "Life’s tough, but it’s tougher when you’re stupid."),
-            new QuoteofADay(9, "Jack Nicholson", "The minute that you’re not learning I believe you’re dead."),
-            new QuoteofADay(10, "Buddha", "Be where you are; otherwise you will miss your life.")
+    private static List<QuoteofTheDay> quoteList = new ArrayList<>(Arrays.asList(
+            new QuoteofTheDay(1, "Dalai Lama", "The purpose of our lives is to be happy."),
+            new QuoteofTheDay(2, "Soren Kierkegaard", "Life is not a problem to be solved, but a reality to be experienced."),
+            new QuoteofTheDay(3, "Oprah Winfrey", "Turn your wounds into wisdom."),
+            new QuoteofTheDay(4, "Deepak Chopra", "The healthiest response to life is joy."),
+            new QuoteofTheDay(5, "T.S. Eliot", "Every moment is a fresh beginning."),
+            new QuoteofTheDay(6, "Jennifer Aniston", "There are no regrets in life, just lessons."),
+            new QuoteofTheDay(7, "Jane Fonda", "It’s never too late – never too late to start over, never too late to be happy."),
+            new QuoteofTheDay(8, "John Wayne", "Life’s tough, but it’s tougher when you’re stupid."),
+            new QuoteofTheDay(9, "Jack Nicholson", "The minute that you’re not learning I believe you’re dead."),
+            new QuoteofTheDay(10, "Buddha", "Be where you are; otherwise you will miss your life."),
+            new QuoteofTheDay(11,"Napoleon Hill", "If you cannot do great things, do small things in a great way."),
+            new QuoteofTheDay(12,"Steve Jobs","Your time is limited, so don't waste it living someone else's life."),
+            new QuoteofTheDay(13,"Gary Vaynerchuk", "Without hustle, talent will only carry you so far."),
+            new QuoteofTheDay(14, "Og Mandino",  "Always do your best. What you plant now, you will harvest later." ),
+            new QuoteofTheDay(15, "Robert Kiyosaki","Don't let the fear of losing be greater than the excitement of winning.")
     ));
 
     private  static List<DefinitionOfWords> wordList = new ArrayList<>(Arrays.asList(
@@ -43,6 +47,7 @@ public class MagicServiceController<Private> {
             new DefinitionOfWords(9, "Tesla", "The SI unit of magnetic flux density."),
             new DefinitionOfWords(10, "Printer", "A machine for printing text or pictures onto paper, especially one linked to a computer.")
     ));
+
     static List<MagicAnswers> answerList = new ArrayList<>();
     int idCounter = 1;
     private  static List<String> answerString = new ArrayList<>(Arrays.asList(
@@ -61,18 +66,18 @@ public class MagicServiceController<Private> {
 
    @RequestMapping(value = "/quote", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public QuoteofADay getQuote(){
-       int randomQuoteIndex = rand.nextInt(quoteList.size());
-       QuoteofADay selectedQuote = quoteList.get(randomQuoteIndex);
-    return selectedQuote;
+    public QuoteofTheDay getQuote(){
+        int randomQuoteIndex = rand.nextInt(quoteList.size());
+        QuoteofTheDay selectedQuote = quoteList.get(randomQuoteIndex);
+        return selectedQuote;
    }
 
    @RequestMapping(value = "/word", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
    public DefinitionOfWords getWord(){
-       int randomWordIndex = rand.nextInt(wordList.size());
-       DefinitionOfWords selectedWord = wordList.get(randomWordIndex);
-       return selectedWord;
+        int randomWordIndex = rand.nextInt(wordList.size());
+        DefinitionOfWords selectedWord = wordList.get(randomWordIndex);
+        return selectedWord;
    }
 
     @RequestMapping(value = "/magic", method = RequestMethod.POST)
@@ -80,8 +85,8 @@ public class MagicServiceController<Private> {
     public MagicAnswers getAnswer(@RequestBody MagicAnswers answer){
         int randomChoice = rand.nextInt(answerString.size());
         String randomAnswer = answerString.get(randomChoice);
-            answer.setId(idCounter++);
-            answer.setAnswer(randomAnswer);
-      return answer;
+        answer.setId(idCounter++);
+        answer.setAnswer(randomAnswer);
+        return answer;
     }
 }

@@ -2,16 +2,16 @@ package com.example.QuoteAPI.model;
 
 import java.util.Objects;
 
-public class QuoteofADay {
+public class QuoteofTheDay {
 
     private  int id;
     private String author;
     private  String quote;
 
-    public QuoteofADay(){
+    public QuoteofTheDay(){
 
     }
-    public QuoteofADay(int id, String author, String quote) {
+    public QuoteofTheDay(int id, String author, String quote) {
         this.id = id;
         this.author = author;
         this.quote = quote;
@@ -46,7 +46,7 @@ public class QuoteofADay {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        QuoteofADay quoteAPI = (QuoteofADay) o;
+        QuoteofTheDay quoteAPI = (QuoteofTheDay) o;
         return id == quoteAPI.id && Objects.equals(author, quoteAPI.author) && Objects.equals(quote, quoteAPI.quote);
     }
 
